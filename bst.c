@@ -1,10 +1,10 @@
 #include "bst.h"
 
-void create(BST *bst)
+void create(nodeType *bst)
 {
     if (bst == NULL)
     {
-        bst = malloc(sizeof(BST));
+        bst = malloc(sizeof(nodeType *));
         printf("Success");
     }
     else
@@ -13,16 +13,46 @@ void create(BST *bst)
     }
 }
 
-void insert(BST *BinarySearchTree, nodeType *node)
+nodeType *create_node(String word)
 {
+    nodeType *node = malloc(sizeof(nodeType *));
+    node->pLeft = NULL;
+    node->pParent = NULL;
+    node->pRight = NULL;
+    strcpy(node->word, word);
+    return node;
 }
-void inorder(nodeType *bst)
-{
 
-    if (bst != NULL)
+nodeType *insert(nodeType *bst, String word)
+{
+    nodeType *node = create_node(word);
+    nodeType *parent = NULL;
+    nodeType *x = bst;
+
+    while (x != NULL)
     {
-        inorder((bst)->pLeft);
-        printf("[%s] ", (bst)->S);
-        inorder((bst)->pRight);
+        parent = x;
+        printf("TestA");
+        if (strcmp(node->word, x->word) == -1)
+        {
+            printf("TestC");
+            x = x->pLeft;
+        }
+        else
+        {
+            printf("TestB");
+            x = x->pRight;
+        }
     }
+
+    node->pParent = parent;
+
+    if (parent == NULL)
+        bst = node;
+    else if (strcmp(node->word, parent->word) == -1)
+        parent->pLeft = node;
+    else
+        parent->pRight = node;
+    printf("TestX");
+    return bst;
 }

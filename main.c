@@ -1,3 +1,5 @@
+typedef char String[46];
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -6,17 +8,29 @@
 int main()
 {
 
-    BST *bst = NULL;
-    create(bst);
+    nodeType *BinarySearchTree = NULL;
+    create(BinarySearchTree);
+    String word = "Cenlo";
+    String word2 = "Ass";
+    String word3 = "Ate";
 
-    nodeType *node = malloc(sizeof(node));
-    strcpy(node->S, "A");
-    node->pLeft = NULL;
-    node->pParent = NULL;
-    node->pRight = NULL;
+    BinarySearchTree = insert(BinarySearchTree, word);
 
-    insert(bst, node);
-    inorder(*bst);
+    printf("[%s]", (BinarySearchTree)->word);
+    BinarySearchTree = insert(BinarySearchTree, word2);
+    printf("[%s]", (BinarySearchTree)->pLeft->word);
+    BinarySearchTree = insert(BinarySearchTree, word3);
+    printf("[%s]", (BinarySearchTree)->pLeft->pLeft->word);
 
+    /*    
+    String word3 = "Gavin";
+    String word4 = "B";
+
+
+    //    inorder(bst);
+    bst = insert(bst, word2);
+    bst = insert(bst, word3);
+    /*   inorder(*bst);
+*/
     return 0;
 }

@@ -1,13 +1,11 @@
 typedef struct node
 {
-    char *S;
+    String word;
     struct node *pLeft, *pRight, *pParent;
 } nodeType;
 
-typedef nodeType *BST;
-
-void create(BST *BinarySearchTree);
+void create(nodeType *BinarySearchTree);
 int search(nodeType *BST, char *key);
-void insert(BST *BinarySearchTree, nodeType *node);
+nodeType *insert(nodeType *bst, String word);
 void inorder(nodeType *bst);
 void destroy(nodeType *BST);
