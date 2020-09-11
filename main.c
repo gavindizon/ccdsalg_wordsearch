@@ -11,7 +11,7 @@ int main()
     nodeType *BinarySearchTree = NULL;
     create(BinarySearchTree);
     String word = "Cenlo";
-    String word2 = "Ass";
+    String word2 = "Ark";
     String word3 = "Ate";
 
     BinarySearchTree = insert(BinarySearchTree, word);
