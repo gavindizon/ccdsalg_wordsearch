@@ -5,11 +5,13 @@ typedef char String[46];
 #include <stdlib.h>
 #include <ctype.h>
 #include "bst.c"
+#include "tokenizer.c"
 
 int main()
 {
 	String fileName;
 	String words[1024];
+	int ctr, wordCount;
 	
     nodeType *BinarySearchTree = NULL;
     nodeType* c = NULL;
@@ -27,44 +29,15 @@ int main()
     printf("Input filename: ");
     scanf("%s", fileName);
     
-    tokenizer(fileName, words);
-
-    insert(&BinarySearchTree, word);
-    printf("\n1. [%s] [%d]\n", (BinarySearchTree)->word, (BinarySearchTree)->cnt);
-    insert(&BinarySearchTree, word2);
-    printf("2. [%s] [%d]\n", (BinarySearchTree)->pRight->word, (BinarySearchTree)->pRight->cnt);
-    insert(&BinarySearchTree, word3);
-    printf("3. [%s] [%d]\n", (BinarySearchTree)->pLeft->word, (BinarySearchTree)->pLeft->cnt);
-    insert(&BinarySearchTree, word4);
-    printf("4. [%s] [%d]\n", (BinarySearchTree)->pLeft->pRight->word, (BinarySearchTree)->pLeft->cnt);
-    insert(&BinarySearchTree, word5);
-    printf("5. [%s] [%d]\n", (BinarySearchTree)->pLeft->pRight->pRight->word, (BinarySearchTree)->pLeft->pRight->pRight->cnt);
-    insert(&BinarySearchTree, word6);
-    printf("6. [%s] [%d]\n", (BinarySearchTree)->pRight->pLeft->word, (BinarySearchTree)->pRight->pLeft->cnt);
-    //   printf("7. [%s] [%d]\n", (BinarySearchTree)->pRight->pRight->word, (BinarySearchTree)->pRight->pRight->cnt);
-    insert(&BinarySearchTree, word);
-    insert(&BinarySearchTree, word);
-    printf("\n1. [%s] [%d]\n", (BinarySearchTree)->word, (BinarySearchTree)->cnt);
-    //printf("7. [%s] [%d]\n", (BinarySearchTree)->pRight->pRight->word, (BinarySearchTree)->pRight->pRight->cnt);
-
+    wordCount = tokenizer(fileName, words);
+//	printf("%d", strlen(words));
+	for (ctr = 0; ctr < wordCount; ctr++) {
+		insert(&BinarySearchTree, words[ctr]);
+	}
 	inorder(BinarySearchTree);
-	c = searchTree(BinarySearchTree, "xx");
-	printf("%s\n", c->word);
-	if(c != NULL){
-		printf("exists\n");
-	}
-	else{
-		printf("does not exist\n");
-	}
-    /*    
-    String word3 = "Gavin";
-    String word4 = "B";
 
-
-//        inorder(bst);
-    bst = insert(bst, word2);
-    bst = insert(bst, word3);
-       inorder(*bst);
-*/
+// 	insert(&BinarySearchTree, word2)
+// 	insert(&BinarySearchTree, word3)
+// 	insert(&BinarySearchTree, word4)
     return 0;
 }
