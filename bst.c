@@ -15,9 +15,9 @@ void create(nodeType *bst)
 
 int isCharacter (char c) {
 	int ctr;
-	char notAllowed[18] = {' ', '.', ',', '?', ';', '!', ':', '\'', '(', ')', '[', ']', '\"', '-', '/', '@', '{', '}'};
+	char notAllowed[19] = {' ', '.', ',', '?', ';', '!', ':', '\'', '(', ')', '[', ']', '\"', '-', '/', '@', '{', '}', '\0'};
 	
-	for (ctr = 0; ctr < 18; ctr++) {
+	for (ctr = 0; ctr < 19; ctr++) {
 		if (c == notAllowed[ctr])
 			return 0;
 	}
@@ -41,15 +41,24 @@ void tokenizer (String fileName, String words[]) {
 				ctr++;
 			} 
 			
-			else {
+			else if (isCharacter(c) == 0) {
 				word[ctr] = '\0';
 				ctr = 0;
 				
 				if (strlen(word) >= 3) {
 					strcpy(words[wordCount], word);
 					wordCount++;
+					
+					memset(word, 0, sizeof(word));
 				}
 			}
+		}
+		
+		if (strlen(word) >= 3) {
+			strcpy(words[wordCount], word);
+			wordCount++;
+			
+			memset(word, 0, sizeof(word));
 		}
 	
 	for (ctr = 0; ctr < wordCount; ctr++) {
