@@ -55,3 +55,16 @@ void inorder(nodeType *bst)
 		inorder(bst->pRight);	
 	}	
 }
+
+nodeType* searchTree(nodeType *bst, String key){
+	if(bst == NULL)
+		return bst;
+	else{
+		if(strcmp(bst->word, key) == 0)
+			return bst;
+		else if(strcmp(bst->word, key) == 1)
+			return searchTree(bst->pLeft, key);
+		else
+			return searchTree(bst->pRight, key);
+	}
+}

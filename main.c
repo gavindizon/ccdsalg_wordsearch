@@ -9,6 +9,9 @@ int main()
 {
 
     nodeType *BinarySearchTree = NULL;
+    nodeType* c = NULL;
+//    c = malloc(sizeof(char) * 256);
+    create(c);
     create(BinarySearchTree);
 
     String word = "Cenlo";
@@ -37,6 +40,14 @@ int main()
     //printf("7. [%s] [%d]\n", (BinarySearchTree)->pRight->pRight->word, (BinarySearchTree)->pRight->pRight->cnt);
 
 	inorder(BinarySearchTree);
+	c = searchTree(BinarySearchTree, "xx");
+	printf("%s\n", c->word);
+	if(c != NULL){
+		printf("exists\n");
+	}
+	else{
+		printf("does not exist\n");
+	}
     /*    
     String word3 = "Gavin";
     String word4 = "B";
