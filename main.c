@@ -3,11 +3,14 @@ typedef char String[46];
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "bst.c"
 
 int main()
 {
-
+	String fileName;
+	String words[1024];
+	
     nodeType *BinarySearchTree = NULL;
     nodeType* c = NULL;
 //    c = malloc(sizeof(char) * 256);
@@ -20,6 +23,11 @@ int main()
     String word4 = "Ass";
     String word5 = "Cam";
     String word6 = "Red";
+    
+    printf("Input filename: ");
+    scanf("%s", fileName);
+    
+    tokenizer(fileName, words);
 
     insert(&BinarySearchTree, word);
     printf("\n1. [%s] [%d]\n", (BinarySearchTree)->word, (BinarySearchTree)->cnt);
