@@ -19,7 +19,7 @@ nodeType *create_node(String word)
     node->pLeft = NULL;
     node->pParent = NULL;
     node->pRight = NULL;
-
+    node->cnt = 1;
     strcpy(node->word, word);
     return node;
 }
@@ -36,8 +36,12 @@ void insert(nodeType **BinarySearchTree, String word)
     {
         insert(&(*BinarySearchTree)->pLeft, word);
     }
-    else
+    else if ((strcmp(word, (*BinarySearchTree)->word) == 1))
     {
         insert(&(*BinarySearchTree)->pRight, word);
+    }
+    else
+    {
+        (*BinarySearchTree)->cnt++;
     }
 }

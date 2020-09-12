@@ -2,6 +2,7 @@ typedef struct node
 {
     String word;
     struct node *pLeft, *pRight, *pParent;
+    int cnt;
 } nodeType;
 
 void create(nodeType *BinarySearchTree);
