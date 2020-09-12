@@ -36,12 +36,13 @@ int main()
     printf("\n1. [%s] [%d]\n", (BinarySearchTree)->word, (BinarySearchTree)->cnt);
     //printf("7. [%s] [%d]\n", (BinarySearchTree)->pRight->pRight->word, (BinarySearchTree)->pRight->pRight->cnt);
 
+	inorder(BinarySearchTree);
     /*    
     String word3 = "Gavin";
     String word4 = "B";
 
 
-    //    inorder(bst);
+//        inorder(bst);
     bst = insert(bst, word2);
     bst = insert(bst, word3);
        inorder(*bst);

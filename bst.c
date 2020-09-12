@@ -45,3 +45,13 @@ void insert(nodeType **BinarySearchTree, String word)
         (*BinarySearchTree)->cnt++;
     }
 }
+
+void inorder(nodeType *bst)
+{
+	if(bst!=NULL)
+	{
+		inorder(bst->pLeft);
+		printf("visited %s\n", bst->word);
+		inorder(bst->pRight);	
+	}	
+}
