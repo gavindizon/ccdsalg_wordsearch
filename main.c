@@ -12,32 +12,26 @@ int main()
 	String fileName;
 	String words[1024];
 	int ctr, wordCount;
-	
+//	FILE *fp;
     nodeType *BinarySearchTree = NULL;
-    nodeType* c = NULL;
-//    c = malloc(sizeof(char) * 256);
-    create(c);
-    create(BinarySearchTree);
 
-    String word = "Cenlo";
-    String word2 = "Rrk";
-    String word3 = "Ark";
-    String word4 = "Ass";
-    String word5 = "Cam";
-    String word6 = "Red";
-    
+    create(BinarySearchTree);    
     printf("Input filename: ");
     scanf("%s", fileName);
+//    fgets(fileName, 46, stdin);
+//    fileName[strlen(fileName)-1] = '\0';
+    printf("%s\n", fileName);
     
     wordCount = tokenizer(fileName, words);
-//	printf("%d", strlen(words));
+	printf("%d\n", wordCount);
+	
 	for (ctr = 0; ctr < wordCount; ctr++) {
 		insert(&BinarySearchTree, words[ctr]);
+		printf("[%s]\n", words[ctr]);
 	}
-	inorder(BinarySearchTree);
+//	fp = fopen("WORDS.txt", "w");
+//	inorder(BinarySearchTree, fp);
+//	fclose(fp);
 
-// 	insert(&BinarySearchTree, word2)
-// 	insert(&BinarySearchTree, word3)
-// 	insert(&BinarySearchTree, word4)
     return 0;
 }

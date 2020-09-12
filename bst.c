@@ -42,19 +42,21 @@ void insert(nodeType **BinarySearchTree, String word)
     {
         insert(&(*BinarySearchTree)->pRight, word);
     }
-    else{
-    	(*BinarySearchTree)->cnt++;
-	}
+    else
+    {
+        (*BinarySearchTree)->cnt++;
+    }
   
 }
 
-void inorder(nodeType *bst)
+
+void inorder(nodeType *bst, FILE *fp)
 {
 	if(bst!=NULL)
 	{
-		inorder(bst->pLeft);
-		printf("%s %d\n", bst->word, bst->cnt);
-		inorder(bst->pRight);	
+		inorder(bst->pLeft, fp);
+		fprintf(fp,"%s %d\n", bst->word, bst->cnt);
+		inorder(bst->pRight, fp);	
 	}	
 }
 

@@ -16,7 +16,8 @@ int tokenizer (String fileName, String words[]) {
 	String word;
 	FILE *fp;
 	
-	fp = fopen(fileName, "r");
+	
+	if((fp = fopen(fileName, "r")) != NULL){
 		while (fscanf(fp, "%c", &c) == 1) {
 			if (c >= 65 && c <= 90)
 				c = tolower(c);
@@ -45,7 +46,10 @@ int tokenizer (String fileName, String words[]) {
 			
 			memset(word, 0, sizeof(word));
 		}
-
+	}
+	else{
+		printf("%s not found\n", fileName);
+	}
 	
 	fclose(fp);
 	return wordCount;
