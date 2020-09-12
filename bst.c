@@ -19,40 +19,25 @@ nodeType *create_node(String word)
     node->pLeft = NULL;
     node->pParent = NULL;
     node->pRight = NULL;
+
     strcpy(node->word, word);
     return node;
 }
 
-nodeType *insert(nodeType *bst, String word)
+void insert(nodeType **BinarySearchTree, String word)
 {
-    nodeType *node = create_node(word);
-    nodeType *parent = NULL;
-    nodeType *x = bst;
-
-    while (x != NULL)
+    if (*BinarySearchTree == NULL)
     {
-        parent = x;
-        printf("TestA");
-        if (strcmp(node->word, x->word) == -1)
-        {
-            printf("TestC");
-            x = x->pLeft;
-        }
-        else
-        {
-            printf("TestB");
-            x = x->pRight;
-        }
+        nodeType *node = create_node(word);
+        *BinarySearchTree = (nodeType *)malloc(sizeof(struct node));
+        *BinarySearchTree = node;
     }
-
-    node->pParent = parent;
-
-    if (parent == NULL)
-        bst = node;
-    else if (strcmp(node->word, parent->word) == -1)
-        parent->pLeft = node;
+    else if (strcmp(word, (*BinarySearchTree)->word) == -1)
+    {
+        insert(&(*BinarySearchTree)->pLeft, word);
+    }
     else
-        parent->pRight = node;
-    printf("TestX");
-    return bst;
+    {
+        insert(&(*BinarySearchTree)->pRight, word);
+    }
 }
