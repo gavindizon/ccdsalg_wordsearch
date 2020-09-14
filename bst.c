@@ -104,3 +104,28 @@ nodeType *searchTree(nodeType *bst, String key)
 			return searchTree(bst->pRight, key);
 	}
 }
+
+void destroy(nodeType *BST) {
+	struct node* node1 = BST->pLeft;
+	struct node* node2;
+	
+	while (node1 != NULL) {
+		node2 = node1->pLeft;
+		free(node1);
+		node1 = node2;
+	}
+	
+	printf("\nSUCCess\n");
+	
+	node1 = BST->pRight;
+	
+	while (node1 != NULL) {
+		node2 = node1->pLeft;
+		free(node1);
+		node1 = node2;
+	}
+	
+	printf("\nsuccESS\n");
+	
+	memset(BST->word, 0, sizeof(BST->word));
+}
