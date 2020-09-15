@@ -28,14 +28,14 @@ int main()
     for (ctr = 0; ctr < wordCount; ctr++)
     {
         insert(&BinarySearchTree, words[ctr]);
-        printf("%s\n", words[ctr]);
+        // printf("%s\n", words[ctr]);
     }
 
     fp = fopen("WORDS.txt", "w");
     inorder(BinarySearchTree, fp);
     fclose(fp);
-    
+
     destroy(BinarySearchTree);
-	
+
     return 0;
 }

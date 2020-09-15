@@ -61,21 +61,33 @@ void insert(nodeType **BinarySearchTree, String word)
 
 	return trail;
 */
-	if (*BinarySearchTree == NULL)
+	nodeType *node = searchTree(*BinarySearchTree, word);
+	// *BinarySearchTree = node;
+	if (node == NULL)
 	{
-		*BinarySearchTree = create_node(word);
+		// printf("node: %s\n bst: %s\n", node->word, (*BinarySearchTree)->word);
+
+		if (*BinarySearchTree == NULL)
+		{
+			*BinarySearchTree = create_node(word);
+		}
+		else if (strcmp(word, (*BinarySearchTree)->word) == -1)
+		{
+			insert(&(*BinarySearchTree)->pLeft, word);
+		}
+		else if ((strcmp(word, (*BinarySearchTree)->word) == 1))
+		{
+			insert(&(*BinarySearchTree)->pRight, word);
+		}
 	}
-	else if (strcmp(word, (*BinarySearchTree)->word) == -1)
+	else if (strcmp(node->word, word) == 0)
 	{
-		insert(&(*BinarySearchTree)->pLeft, word);
-	}
-	else if ((strcmp(word, (*BinarySearchTree)->word) == 1))
-	{
-		insert(&(*BinarySearchTree)->pRight, word);
-	}
-	else
-	{
-		(*BinarySearchTree)->cnt++;
+		// printf("")
+		// printf("not null: \nnode: %s\n bst: %s\n", node->word, (*BinarySearchTree)->word);
+
+		// (*BinarySearchTree)->cnt++;
+		node->cnt++;
+		// printf("%s: %d\n", node->word, node->cnt);
 	}
 	//return BinarySearchTree;
 }
@@ -93,7 +105,7 @@ void inorder(nodeType *bst, FILE *fp)
 nodeType *searchTree(nodeType *bst, String key)
 {
 	if (bst == NULL)
-		return bst;
+		return NULL;
 	else
 	{
 		if (strcmp(bst->word, key) == 0)
@@ -105,27 +117,30 @@ nodeType *searchTree(nodeType *bst, String key)
 	}
 }
 
-void destroy(nodeType *BST) {
-	struct node* node1 = BST->pLeft;
-	struct node* node2;
-	
-	while (node1 != NULL) {
+void destroy(nodeType *BST)
+{
+	struct node *node1 = BST->pLeft;
+	struct node *node2;
+
+	while (node1 != NULL)
+	{
 		node2 = node1->pLeft;
 		free(node1);
 		node1 = node2;
 	}
-	
+
 	printf("\nSUCCess\n");
-	
+
 	node1 = BST->pRight;
-	
-	while (node1 != NULL) {
+
+	while (node1 != NULL)
+	{
 		node2 = node1->pLeft;
 		free(node1);
 		node1 = node2;
 	}
-	
+
 	printf("\nsuccESS\n");
-	
+
 	memset(BST->word, 0, sizeof(BST->word));
 }
