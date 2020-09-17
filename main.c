@@ -18,13 +18,9 @@ int main()
     create(BinarySearchTree);
     printf("Input filename: ");
     scanf("%s", fileName);
-    // fgets(fileName, 46, stdin);
-    // fileName[strlen(fileName) - 1] = '\0';
     printf("%s\n", fileName);
 
     wordCount = tokenizer(fileName, words);
-    printf("%d\n", wordCount);
-
     for (ctr = 0; ctr < wordCount; ctr++)
     {
         insert(&BinarySearchTree, words[ctr]);
@@ -35,11 +31,6 @@ int main()
     inorder(BinarySearchTree, fp);
     fclose(fp);
     destroy(BinarySearchTree);
-
-    fp = fopen("DESTROYEDWORDS.txt", "w");
-    inorder(BinarySearchTree, fp);
-
-    fclose(fp);
 
     return 0;
 }

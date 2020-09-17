@@ -7,10 +7,6 @@ void create(nodeType *bst)
 		bst = malloc(sizeof(nodeType *));
 		//        printf("Success");
 	}
-	else
-	{
-		printf("Memory is already allocated in BST");
-	}
 }
 
 nodeType *create_node(String word)
@@ -25,47 +21,9 @@ nodeType *create_node(String word)
 
 void insert(nodeType **BinarySearchTree, String word)
 {
-	/*
-	nodeType *node = create_node(word);
-
-	nodeType *copy = BinarySearchTree;
-
-	nodeType *trail = NULL;
-
-	while (copy != NULL)
-	{
-		trail = copy;
-		if (strcmp(word, copy->word) == -1)
-		{
-			printf("Test");
-			copy = copy->pLeft;
-		}
-		else
-			copy = copy->pRight;
-	}
-	printf("FInished Loop");
-	printf("Comparing, given word %s to %s", word, trail->word);
-	if (trail == NULL) // tree is empty
-		trail = node;
-	else if (strcmp(word, trail->word) == -1)
-	{
-		printf("Test");
-		trail->pLeft = node;
-		printf("Test22");
-	}
-
-	else if (strcmp(word, trail->word) == 1)
-		trail->pRight = node;
-	else
-		trail->cnt++;
-
-	return trail;
-*/
 	nodeType *node = searchTree(*BinarySearchTree, word);
-	// *BinarySearchTree = node;
 	if (node == NULL)
 	{
-		// printf("node: %s\n bst: %s\n", node->word, (*BinarySearchTree)->word);
 
 		if (*BinarySearchTree == NULL)
 		{
@@ -82,14 +40,8 @@ void insert(nodeType **BinarySearchTree, String word)
 	}
 	else if (strcmp(node->word, word) == 0)
 	{
-		// printf("")
-		// printf("not null: \nnode: %s\n bst: %s\n", node->word, (*BinarySearchTree)->word);
-
-		// (*BinarySearchTree)->cnt++;
 		node->cnt++;
-		// printf("%s: %d\n", node->word, node->cnt);
 	}
-	//return BinarySearchTree;
 }
 
 void inorder(nodeType *bst, FILE *fp)
@@ -129,8 +81,6 @@ void destroy(nodeType *BST)
 		node1 = node2;
 	}
 
-	printf("\nSUCCess\n");
-
 	node1 = BST->pRight;
 
 	while (node1 != NULL)
@@ -139,8 +89,6 @@ void destroy(nodeType *BST)
 		free(node1);
 		node1 = node2;
 	}
-
-	printf("\nsuccESS\n");
 
 	memset(BST->word, 0, sizeof(BST->word));
 }
