@@ -30,7 +30,11 @@ int main()
     fp = fopen("WORDS.txt", "w");
     inorder(BinarySearchTree, fp);
     fclose(fp);
-    destroy(BinarySearchTree);
+    destroy(&BinarySearchTree);
+
+    fp = fopen("DESTROYEDTEXT.txt", "w");
+    inorder(BinarySearchTree, fp);
+    fclose(fp);
 
     return 0;
 }

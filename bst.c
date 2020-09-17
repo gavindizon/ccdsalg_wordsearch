@@ -69,35 +69,38 @@ nodeType *searchTree(nodeType *bst, String key)
 	}
 }
 
-void destroy(nodeType *BST)
+void destroy(nodeType **BST)
 {
-//	struct node *node1 = BST->pLeft;
-//	struct node *node2;
-//
-//	while (node1 != NULL)
-//	{
-//		node2 = node1->pLeft;
-//		free(node1);
-//		node1 = node2;
-//	}
-//
-//	node1 = BST->pRight;
-//
-//	while (node1 != NULL)
-//	{
-//		node2 = node1->pLeft;
-//		free(node1);
-//		node1 = node2;
-//	}
-//
-//	memset(BST->word, 0, sizeof(BST->word));
+	//	struct node *node1 = BST->pLeft;
+	//	struct node *node2;
+	//
+	//	while (node1 != NULL)
+	//	{
+	//		node2 = node1->pLeft;
+	//		free(node1);
+	//		node1 = node2;
+	//	}
+	//
+	//	node1 = BST->pRight;
+	//
+	//	while (node1 != NULL)
+	//	{
+	//		node2 = node1->pLeft;
+	//		free(node1);
+	//		node1 = node2;
+	//	}
+	//
+	//	memset(BST->word, 0, sizeof(BST->word));
 
-	if (BST == NULL)
+	if (*BST == NULL)
 		return;
-	
-	destroy(BST->pLeft);
-	
-	destroy(BST->pRight);
-	
-	free(BST);
+
+	destroy(&(*BST)->pLeft);
+
+	destroy(&(*BST)->pRight);
+
+	//	memset((*BST)->word, 0, sizeof((*BST)->word));
+	(*BST)->cnt = 0;
+	free(*BST);
+	*BST = NULL;
 }
